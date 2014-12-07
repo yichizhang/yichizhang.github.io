@@ -4,7 +4,7 @@ title:  "Switch on auto complete in Terminal"
 date:   2014-12-07 20:49:22
 ---
 
-Edit the .inputrc file in your Home directory. The file might now exist.
+Edit the .inputrc file in your Home directory. The file might not exist.
 
 {% highlight console %}
 vi .inputrc
