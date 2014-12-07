@@ -4,13 +4,16 @@ title:  "Switch on auto complete in Terminal"
 date:   2014-12-07 20:49:22
 ---
 
-Edit the .inputrc file in your Home directory. The file might not exist.
+How to enable TAB auto completion in Mac OS X Terminal? It's easy.
+
+Firstly, edit the .inputrc file in your Home directory. Execute the following commands:
 
 {% highlight console %}
+cd ~
 vi .inputrc
 {% endhighlight %}
 
-Add the following content:
+Then, add the following content:
 
 {% highlight console %}
 set completion-ignore-case on
