@@ -8,7 +8,8 @@ Last month, I decided to sell my old MacBook on eBay. So I took pictures of it. 
 
 ![Very large image files]({{ site.url }}/assets/photos_before_resize.png)
 
-I found a way to resize all the photos quickly with 'sips' by executing a simple command.
+'sips' is a command line tool that you can use to resize all the photos.
+
 
 Just open Terminal, change the directory to where your photos are located, then run this command:
 
@@ -16,9 +17,14 @@ Just open Terminal, change the directory to where your photos are located, then 
 sips -Z 1024 *.jpg
 {% endhighlight %}
 
+
 -Z: Maintain original image's aspect ratio;
+
 640: Maximum height and width
+
 *.jpg: Files to be resized. In this case, *.jpg means 'all the files in the directory that has "jpg" as its extension'
+
+
 
 Result:
 
