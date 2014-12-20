@@ -23,7 +23,7 @@ The weird thing was, the application crashes right before the contacts view cont
 process launch failed: timed out trying to launch app
 {% endhighlight %}
 
-So as I said, setting breakpoints won't work; the application just quits with no other information provided, so I couldn't debug.
+As I said, setting breakpoints won't work; the application just quits with no useful information provided, so I couldn't debug.
 
 I tried:
 
@@ -39,14 +39,12 @@ Along with:
 
 Wouldn't work.
 
-
-
-
+* * *
 
 Finally, I realized that the problem could be, I didn't link 'AddressBook.framework'.
 
 So I went to the Target; added 'AddressBook.framework' to 'Linked Frameworks and Libraries'; cleaned project and cleaned build folder.
 
-Ran the app on my device; the app still crashes, but it wouldn't just disappear without any useful information. I got information about the error.
+Ran the application on my device; the application still crashes, but it won't just disappear without any useful information. I got information about the error.
 
-That's great. I'm able to debug now.
+That's great. Although it still crashes, but at least I'm able to debug.
