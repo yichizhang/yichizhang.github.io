@@ -1,13 +1,15 @@
 ---
 layout: post
 title:  "Without linking framework, application compiles, runs on iOS 8 simulator and iOS 7 device, but crashes on iOS 8 device"
-date:   2014-12-11 17:41:00
+date:   2014-12-21 01:04:00
 ---
 
+{% highlight console %}
 Mac OS Version: OS X 10.10.1 (14B25)
 XCode Version: Version 6.1.1 (6A2008a)
 Simulator: Version 8.1 (550.3)
 iPhone 6 Simulator OS Version: iOS 8.1 (12B411)
+{% endhighlight %}
 
 I was programming an iPhone application that requires accessing user's contacts.
 
@@ -37,9 +39,13 @@ Along with:
 
 Wouldn't work.
 
+
+
+
+
 Finally, I realized that the problem could be, I didn't link 'AddressBook.framework'.
 
-So I went to the Target; added 'AddressBook.framework'; cleaned project and cleaned build folder.
+So I went to the Target; added 'AddressBook.framework' to 'Linked Frameworks and Libraries'; cleaned project and cleaned build folder.
 
 Ran the app on my device; the app still crashes, but it wouldn't just disappear without any useful information. I got information about the error.
 
