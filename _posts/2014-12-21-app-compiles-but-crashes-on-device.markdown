@@ -39,11 +39,11 @@ Along with:
 
 Wouldn't work.
 
-* * *
+<br><br>
 
 Finally, I realized that the problem could be, I didn't link 'AddressBook.framework'.
 
-So I went to the Target; added 'AddressBook.framework' to 'Linked Frameworks and Libraries'; cleaned project and cleaned build folder.
+So I went to target settings; added 'AddressBook.framework' to 'Linked Frameworks and Libraries'; cleaned project and cleaned build folder.
 
 Ran the application on my device; the application still crashes, but it won't just disappear without any useful information. I got information about the error.
 
