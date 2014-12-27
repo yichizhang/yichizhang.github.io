@@ -6,7 +6,7 @@ date:   2014-12-27 04:26:00
 
 I've been programming in Swift today.
 
-Coming from a C and Objective-C background, I assumed the following code would work:
+Coming from a C/Objective-C background, I assumed the following code would work:
 
 {% highlight swift %}
 // won't compile
