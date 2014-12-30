@@ -35,6 +35,12 @@ ul, ol, dl, figure,
     margin-bottom: $spacing-unit / 2;
 }
 
+/**
+ * Making table 100% width
+ */
+table {
+    width: 100%;
+}
 
 
 /**
