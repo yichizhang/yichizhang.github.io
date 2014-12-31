@@ -15,9 +15,11 @@ I was programming an iPhone application that requires accessing user's contacts.
 
 I used [APAddressBook library](https://github.com/Alterplay/APAddressBook)
 
-The application complies; it works on my old iPhone 4 that runs iOS 7.1; works on simulator; but not on my iPhone 6 (iOS 8.1.2).
+<br><br>
 
-The weird thing was, the application crashes right before the contacts view controller shows up; no error messages; setting breakpoints won't work; only prints this message:
+###The application complies; it works on my old iPhone 4 that runs iOS 7.1; works on simulator; but not on my iPhone 6 (iOS 8.1.2).
+
+###The weird thing was, the application crashes right before the contacts view controller shows up; no error messages; setting breakpoints won't work; only prints this message:
 
 {% highlight console %}
 process launch failed: timed out trying to launch app
@@ -41,7 +43,7 @@ Wouldn't work.
 
 <br><br>
 
-Finally, I realized that the problem could be, I didn't link 'AddressBook.framework'.
+##At the end, I realized that the problem was, I didn't link 'AddressBook.framework'.
 
 So I went to target settings; added 'AddressBook.framework' to 'Linked Frameworks and Libraries'; cleaned project and cleaned build folder.
 
