@@ -26,3 +26,8 @@ task :post do
 
   system ("#{ENV['EDITOR']} #{file}")
 end
+
+desc 'List all draft posts'
+task :drafts do
+  puts `find ./_posts -type f -exec grep -H 'published: false' {} \\;`
+end
