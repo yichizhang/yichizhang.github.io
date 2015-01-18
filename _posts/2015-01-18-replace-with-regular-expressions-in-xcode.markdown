@@ -8,7 +8,7 @@ date: 2015-01-18 12:49:02
 
 ##Find all occurrences of <code>icon_name_of_icon</code> and replace them with <code>ion_name_of_icon</code>
 
-In the 2.x version of ionicons, the icon name string literals have changed from <code>icon_name_of_icon</code> to <code>ion_name_of_icon</code>
+In the 2.x version of [sweetmandm/ionicons-iOS](https://github.com/sweetmandm/ionicons-iOS), the format of icon code constants have changed from <code>icon_name_of_icon</code> to <code>ion_name_of_icon</code>
 
 For example:
 
