@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Rewrite Objective-C code in Swift (regular expression replace)
+title: Rewrite Objective-C code in Swift (Replace with Regular Expressions)
 published: true
 categories:
 date: 2015-01-15 00:28:19
 ---
 
-Regular expression replace
+###Rewrite Objective-C code in Swift with the help of XCode's Regular Expression replace:
 
-## Property declarations
+##Property declarations
 {% highlight objc %}
 
 @property (nonatomic, strong) NSArray *array1;
