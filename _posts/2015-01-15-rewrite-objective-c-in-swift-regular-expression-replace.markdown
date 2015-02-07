@@ -21,11 +21,11 @@ date: 2015-01-15 00:28:19
 
 Replace:
 
-<code>@(.*)\) (.*) \*(.*);</code>
+<code> @property \((.*)\) (.*) (.*); </code>
 
 With:
 
-<code>var $3:$2!</code>
+<code>var $3:$2?</code>
 
 Result:
 {% highlight objc %}
