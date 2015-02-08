@@ -16,12 +16,13 @@ date: 2015-01-15 00:28:19
 @property (nonatomic, strong) NSArray *array3;
 @property (nonatomic, strong) NSMutableDictionary *dictionary;
 @property (nonatomic, strong) AwesomeObject *object;
+@property (nonatomic, assign) BOOL awesomeValue;
 
 {% endhighlight %}
 
 Replace:
 
-<code> @property \((.*)\) (.*) (.*); </code>
+<code>@property \((.*)\) (.*) \*?(.*);</code>
 
 With:
 
@@ -30,10 +31,11 @@ With:
 Result:
 {% highlight objc %}
 
-var array1:NSArray!
-var array2:NSArray!
-var array3:NSArray!
-var dictionary:NSMutableDictionary!
-var object:AwesomeObject!
+var array1:NSArray?
+var array2:NSArray?
+var array3:NSArray?
+var dictionary:NSMutableDictionary?
+var object:AwesomeObject?
+var awesomeValue:BOOL?
 
 {% endhighlight %}
