@@ -1,3 +1,5 @@
+# This script is taken from
+# http://arjanvandergaag.nl/blog/creating-new-jekyll-posts.html
 require 'time'
 
 desc 'create a new draft post'
