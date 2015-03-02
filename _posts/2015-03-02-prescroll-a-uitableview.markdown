@@ -32,7 +32,7 @@ class PrescrollDemoViewController : UITableViewController {
 
 It works when I was trying to "prescroll" to Row 7, however, the result is not satisfactory when scrolling a bit more downward. I tried "prescrolling" to Row 18 (the last row), and it does not scroll to the correct position:
 
-![prescroll in view will appear]({{ site.url }}/assets/prescrollInViewWillAppear.png)
+<img alt="prescroll in view will appear" src="{{ site.url }}/assets/prescrollInViewWillAppear.png" width="370" />
 
 Then I tried "prescrolling" in "viewDidAppear:":
 
@@ -95,4 +95,4 @@ Result:
 ![prescroll in view did layout subviews with a boolean flag]({{ site.url }}/assets/prescrollInViewDidLayoutSubviews.png)
 
 
-I put the source code of this method in [CrazyDemoViewController.swift](https://github.com/yichizhang/YZBasicCells/blob/master/BasicCells-Demo/BasicCells-Demo/CrazyDemoViewController.swift), as a part of the demo project of my [YZBasicCells](https://github.com/yichizhang/YZBasicCells) repository.
+I put the source code of this method in [CrazyDemoViewController.swift](https://github.com/yichizhang/YZBasicCells/blob/master/BasicCells-Demo/BasicCells-Demo/CrazyDemoViewController.swift), as a part of the demo project of [YZBasicCells](https://github.com/yichizhang/YZBasicCells).
