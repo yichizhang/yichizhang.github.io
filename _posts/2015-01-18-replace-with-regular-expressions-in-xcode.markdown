@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Replace with Regular Expressions in XCode
+title: Replace with Regular Expressions in Xcode
 published: true
 categories:
 date: 2015-01-18 12:49:02
