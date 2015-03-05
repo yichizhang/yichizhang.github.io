@@ -8,7 +8,7 @@ Last month, I decided to sell my old MacBook on-line. So I took pictures of it. 
 
 Very large image files:
 
-![Very large image files]({{ site.url }}/assets/photos_before_resize.png)
+![Very large image files]({{ site.url }}/assets/2014/02/photos_before_resize.png)
 
 There is an easy way to down size all of them, with 'sips'.
 
@@ -32,4 +32,4 @@ Meaning of the parameters:
 
 Result:
 
-![sips downsized all my images]({{ site.url }}/assets/photos_after_resize.png)
+![sips downsized all my images]({{ site.url }}/assets/2014/02/photos_after_resize.png)

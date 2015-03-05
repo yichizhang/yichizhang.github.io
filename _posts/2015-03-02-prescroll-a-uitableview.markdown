@@ -32,7 +32,7 @@ class PrescrollDemoViewController : UITableViewController {
 
 It works when I was trying to "prescroll" to Row 7, however, the result is not satisfactory when scrolling a bit more downward. I tried "prescrolling" to Row 18 (the last row), and it does not scroll to the correct position:
 
-<img alt="prescroll in view will appear" src="{{ site.url }}/assets/prescrollInViewWillAppear.png" width="370" />
+<img alt="prescroll in view will appear" src="{{ site.url }}/assets/2015/03/prescrollInViewWillAppear.png" width="370" />
 
 Then I tried "prescrolling" in "viewDidAppear:":
 
@@ -52,7 +52,7 @@ class PrescrollDemoViewController : UITableViewController {
 
 Using this method, Row 18 scrolls to the correct position, but the user sees the whole "scrolling process":
 
-![prescroll in view did appear]({{ site.url }}/assets/prescrollInViewDidAppear.png)
+![prescroll in view did appear]({{ site.url }}/assets/2015/03/prescrollInViewDidAppear.png)
 
 How to "prescroll" to the correct indexPath you wish, without letting the user see the whole "scrolling process"? I figured out a way to do it, which is scrolling in "viewDidLayoutSubviews" with a Bool flag:
 
@@ -92,7 +92,7 @@ class PrescrollDemoViewController : UITableViewController {
 
 Result:
 
-![prescroll in view did layout subviews with a boolean flag]({{ site.url }}/assets/prescrollInViewDidLayoutSubviews.png)
+![prescroll in view did layout subviews with a boolean flag]({{ site.url }}/assets/2015/03/prescrollInViewDidLayoutSubviews.png)
 
 
 I put the source code of this method in [CrazyDemoViewController.swift](https://github.com/yichizhang/YZBasicCells/blob/master/BasicCells-Demo/BasicCells-Demo/CrazyDemoViewController.swift), as a part of the demo project of [YZBasicCells](https://github.com/yichizhang/YZBasicCells).
