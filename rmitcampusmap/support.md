@@ -4,7 +4,7 @@ title: RMIT Campus Map App Support
 permalink: /rmitcampusmap/support/
 ---
 
-This is the support page of RMIT Campus map.
+This is the support page of the RMIT Campus Map App.
 
 <br>
 
@@ -23,19 +23,22 @@ This is the support page of RMIT Campus map.
 ##Search for a staff member
 
 ![Search for a staff member instructions 1]({{ site.url }}/assets/appsupport/rmitcampusmap/find_a_staff_member_1.jpg)
-![Search for a staff member instructions 2]({{ site.url }}/assets/appsupport/rmitcampusmap/find_a_staff_member_2.jpg)
 
 1. Tap the menu button on the right hand side of the navigation bar.
 2. Select "Search Staff".
+
+![Search for a staff member instructions 2]({{ site.url }}/assets/appsupport/rmitcampusmap/find_a_staff_member_2.jpg)
+
 3. Tap the search bar, and type in the name of the staff you are looking for.
 4. Click on their names to see their details.
 
 ##View the sustainability or heritage information of a building
 
 ![View the sustainability and heritage information of a building instructions 1]({{ site.url }}/assets/appsupport/rmitcampusmap/view_building_information_1.jpg)
-![View the sustainability and heritage information of a building instructions 2]({{ site.url }}/assets/appsupport/rmitcampusmap/view_building_information_2.jpg)
 
 1. Tap the menu button on the right hand side of the navigation bar.
 2. Tap "Heritage" or "Sustainability".
-3. Tap on the red pins, or the pins without any decorations on the tip to view the heritage information of the building; tap on the blue pins, or the pins with a lighter dot on the tip to view the sustainability information.
 
+![View the sustainability and heritage information of a building instructions 2]({{ site.url }}/assets/appsupport/rmitcampusmap/view_building_information_2.jpg)
+
+3. Tap on the red pins, or the pins without any decorations on the tip to view the heritage information of the building; tap on the blue pins, or the pins with a lighter dot on the tip to view the sustainability information.
