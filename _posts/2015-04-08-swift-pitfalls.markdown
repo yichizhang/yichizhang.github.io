@@ -6,7 +6,7 @@ categories:
 date: 2015-04-08 08:24:08
 ---
 
-I've been doing iOS and Mac OS programming in Swift for a while and I noticed some "pitfalls". They are some syntax details that may cause compiler errors and leave you wonder, "why is that". I believe that all the "pitfalls" here is included in the Swift official documentation and tutorials already. But I think it would help myself and other people if I put them all together here in one place.
+I've been doing iOS and Mac OS programming in Swift for a while and I noticed some "pitfalls". They are some syntax details that may cause compiler errors and leave you wonder, "why is that". I believe that all the "pitfalls" here are included in the Swift official documentation and tutorials already. But I think it would help myself and other people if I put them all together here in one place.
 
 
 <br />
@@ -143,7 +143,7 @@ func moveViewToCenterReturnsTrueIfStillVisible() -> Bool {
 func performViewAnimation() {
 
 	// Works!
-	let animationsClosure: { () -> Void in
+	let animationClosure: { () -> Void in
 		moveViewToCenter()
 	})
 					
@@ -166,7 +166,7 @@ Fix:
 {% highlight swift %}
 func performViewAnimation() {
 	// Works!
-	let animationsClosure: { () -> Void in
+	let animationClosure: { () -> Void in
 		moveViewToCenterReturnsTrueIfStillVisible()
 		return
 	})
