@@ -6,230 +6,158 @@ categories:
 date: 2015-04-08 08:24:08
 ---
 
+*2017-03-16: Updated for Swift 3.0*
+
 I've been doing iOS and Mac OS programming in Swift for a while and I noticed some "pitfalls". They are some syntax details that may cause compiler errors and leave you wonder, "why is that". I believe that all the "pitfalls" here are included in the Swift official documentation and tutorials already. But I think it would help myself and other people if I put them all together here in one place.
 
 
 <br />
 
-## Naming of methods
+## 1. Naming of methods
 
 The following code won't work:
+
 {% highlight swift %}
-class WeirdClass {
-	
-	class func println(string:String) {
-		
-		println("---\(string)---")
-		// The above line will call itself i.e.
-		// `WeirdClass.println(string:String)`
-		// instead of system's println
-		// leading to an infinite cycle
-	}
-	
-	init() {
-		WeirdClass.println("init")
-	}
+class TestClass {
+  class func print(_ string: String) {
+    print("Test: \(string)")
+    // The above line will call itself i.e. `TestClass.print(_:)`
+    // instead of `print(_:​separator:​terminator:​)` in Swift Standard Library
+    // leading to an infinite cycle
+  }
+  
+  init() {
+    TestClass.print("init")
+  }
 }
+{% endhighlight %}
+
+Fix:
+{% highlight swift %}
+  class func print(_ string: String) {
+    Swift.print("Test: \(string)")
+  }
 {% endhighlight %}
 
 <br />
 
-## Object does not respond to selector when its class is not a subclass of `NSObject`.
+## 2. Exposing method to Objective-C
 
-You can't do:
+In Swift 3.0, the following code won't compile:
+
 {% highlight swift %}
 // Does not work
-class EasyTimerManager { // Not a subclass of `NSObject`
-	var timer:NSTimer?
+class TestClass { // Not a subclass of `NSObject`
+  func setUp() {
+    button.addTarget(
+      self,
+      action: #selector(buttonTapped(_:)),
+      for: .touchUpInside)
+  }
 
-	...
-
-	func setUpTimer() {
-		timer = NSTimer.scheduledTimerWithTimeInterval(
-			self.timeInterval,
-			target: self,
-			selector: "timerFired:",
-			userInfo: nil,
-			repeats: false
-		)
-	}
-
-	func timerFired(sender:AnyObject) {
-		...
-	}
+  private func buttonTapped(sender: Any) { // Private
+  }
 }
 {% endhighlight %}
 
-Eror message:
+Error message would be `Argument of '#selector' refers to instance method 'buttonTapped' that is not exposed to Objective-C'`
 
-{% highlight bash %}
-*** NSForwarding: warning: object 0x7ff7630698c0 of class 'YourProject.EasyTimerManager' does not implement methodSignatureForSelector: -- trouble ahead
-Unrecognized selector -[YourProject.EasyTimerManager timerFired:]
-{% endhighlight %}
+<br />
 
-Fix:
+Fix by adding `@objc` to the method:
 
 {% highlight swift %}
+class TestClass {
+  @objc private func buttonTapped(sender: Any) {
+  }
+}
+{% endhighlight %}
 
-// Works!
-class EasyTimerManager : NSObject {
-	...
-	func timerFired(sender:AnyObject) {
-		...
-	}
+Thanks to reader Jon Showing for their input.
+
+<br />
+
+## 3. Single line expression in closures: Implicit 'return'
+
+{% highlight swift %}
+func moveViewsToCenter() {
+}
+
+func makeViewsVisible() -> Bool {
+}
+
+func performAnimation() {
+  // Works!
+  let animationsA = { () -> Void in
+    self.moveViewsToCenter()
+  }
+          
+  // Swift 2.3: Won't compile
+  // Swift 3.0: Warning with message
+  //   "Result of call to 'makeViewsVisible()' is unused"
+  let animationsB = { () -> Void in
+    self.makeViewsVisible() 
+  }
+
+  // Works!
+  let animationsC = { () -> Bool in
+    self.makeViewsVisible()
+    // This is equivalent to writing
+    // `return self.makeViewsVisible()`
+  }
 }
 {% endhighlight %}
 
 <br />
 
-## Object does not respond to selector if the function is private.
+Fix by either adding `@discardableResult` to the method,
 
-You can't do:
 {% highlight swift %}
-// Does not work either
-class EasyTimerManager : NSObject {
-	...
-
-	func setUpTimer() {
-		timer = NSTimer.scheduledTimerWithTimeInterval(
-			self.timeInterval,
-			target: self,
-			selector: "timerFired:",
-			userInfo: nil,
-			repeats: false
-		)
-	}
-
-	private func timerFired(sender:AnyObject) { // Private!
-		...
-	}
+@discardableResult func makeViewsVisible() -> Bool {
 }
 {% endhighlight %}
 
-Error message:
-
-{% highlight bash %}
--[YourProject.EasyTimerManager timerFired:]: unrecognized selector sent to instance 0x7a1cc610
-*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[YourProject.EasyTimerManager timerFired:]: unrecognized selector sent to instance 0x7a1cc610'
-{% endhighlight %}
-
-Fix:
+or 
 
 {% highlight swift %}
-
-// Works!
-class EasyTimerManager : NSObject {
-	...
-	func timerFired(sender:AnyObject) {
-		...
-	}
-}
-
+  let animationsB = { () -> Void in
+    let _ = self.makeViewsVisible()
+  }
 {% endhighlight %}
 
 <br />
 
-## Single line expression in closures: Implicit 'return'
+## 4. Closures that take no parameters and return `Void`
 
-{% highlight swift %}
-func moveViewToCenter() {
-	...
-}
-
-func moveViewToCenterReturnsTrueIfStillVisible() -> Bool {
-	...
-}
-
-func performViewAnimation() {
-
-	// Works!
-	let animationClosure: { () -> Void in
-		moveViewToCenter()
-	})
-					
-	// Does not work.
-	let invalidClosure: { () -> Void in
-		moveViewToCenterReturnsTrueIfStillVisible()
-
-		// This is equivalent to writing
-		// `return moveViewToCenterReturnsTrueIfStillVisible()`
-		// the function returns a `Bool` and
-		// does not match the closure's return type `Void`
-	})
-
-	...
-}
-
-{% endhighlight %}
-
-Fix:
-{% highlight swift %}
-func performViewAnimation() {
-	// Works!
-	let animationClosure: { () -> Void in
-		moveViewToCenterReturnsTrueIfStillVisible()
-		return
-	})
-
-	...
-}
-{% endhighlight %}
-
-<br />
-
-## Closures that takes no parameters and returns `Void`
+You COULD write: `() -> ()` OR `() -> Void`
 
 {% highlight swift %}
 // Valid!
-let transformationClosure = { () -> () in
-    self.awesomeView.transform = CGAffineTransformIdentity
+let closure = { () -> () in
 }
 
 // Valid!
-let awesomeClosure = { () -> Void in
-    self.awesomeBool = true
+let closure = { () -> Void in
 }
+{% endhighlight %}
 
-// Error! Invalid!
-let invalidClosure = { Void -> () in
-    //does not work
-    ...
+BUT NOT <strike>Void -> ()</strike>
+
+{% highlight swift %}
+// ERROR! Invalid!
+let invalidClosure = { /* ERROR! */ Void -> () in
 }
 {% endhighlight %}
 
 <br />
 
-## Not a Swift pitfall - happened when writing Objective-C after writing a lot of Swift
-
-This is probably is not a Swift pitfall - happened to me when writing Objective-C after writing a lot of Swift.
-
-In Swift you can do something like this:
+But, the easiest is probably:
 
 {% highlight swift %}
-var error:NSError?
-{% endhighlight %}
-
-And error will be nil. You don't have to initialise `error` to `nil` any more
-
-Then the problem occurred after returning to Objective-C. I wrote
-
-{% highlight objc %}
-NSError *error;
-
-// Operations
-...
-
-if (error == nil) {
-	// Success, NEVER!
-} else {
-	// Failure, ALWAYS!
+// Valid!
+let closure = {
+  // Your code
 }
 {% endhighlight %}
 
-Then it never succeeds! The error is never nil! Even though I get the ideal result from the operations all the time.
-
-Then I realised I should write
-
-{% highlight objc %}
-NSError *error = nil;
-{% endhighlight %}
+<br />
