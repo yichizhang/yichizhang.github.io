@@ -12,7 +12,7 @@ This is the support page of the AGK Ancient Greek Keyboard (Polytonic Greek) App
 1. [Add AGK to your system keyboards](#add-agk-to-your-system-keyboards)
 2. [Switch between different layouts](#switch-between-different-layouts)
 
-##Add AGK to your system keyboards
+## Add AGK to your system keyboards
 
 Go to **Settings > General > Keyboard > Keyboards**.
 
@@ -35,7 +35,7 @@ AGK is successfully added. Enjoy!
 ![Successfully added]({{ site.url }}/assets/appsupport/agk/system_success.png)
 
 
-##Switch between different layouts
+## Switch between different layouts
 
 Long tap **Globe Key**.
 
